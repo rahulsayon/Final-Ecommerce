@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+         <div class="col-12 col-md-6">
+            <a href="{{ object.get_absolute_url }}" > {{ object.title }} </a>
+            <p>{{ object.description }} </p>
+            <img src="{{  object.image.url  }}" class="img-fluid text-center" />
+        </div>
+
+        <div class="col-12 col-md-6">
+            {% comment %} {{ cart }} {% endcomment %}
+                {% include 'products/snippets/update-cart.html' with product=object cart=cart %}
+            
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+  

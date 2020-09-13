@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ecommerce</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% include 'css/css.html' %}
+</head>
+<body>
+    {% include 'navbar.html' with title="E-commerce" %}
+
+       {% block content %}
+       
+       {% endblock %}
+
+       {% include 'js/js.html' %}
+</body>
+</html>

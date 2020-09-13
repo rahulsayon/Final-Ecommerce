@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <div class="containers">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8">
+            <table class="table cart-table">
+                <thead  class='cart-body'>
+                    <tr>
+                        <td> #</td>
+                        <td> Product Name</td>
+                        <td> Product Price</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%  for product  in cart.products.all %}
+                    <tr>
+                        <td> {{ product.id }} </td>
+                        <td> <a href="{% url "products:detail" slug=product.slug  %}"> {{ product.title }} </a>
+                            {%  include "products/snippets/update-cart.html" with product=product cart=cart in_cart=True %}
+                        </td>
+                        <td> {{ product.price }} </td>
+                        
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="2"></td>
+                        <td><b>Subtotal : </b>{{ cart.subtotal }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td><b>Total : </b>{{ cart.total }}</td>
+                    </tr>
+                     <tr>
+                        <td colspan="2"></td>
+                        <td><a  class="btn btn-success" href="{%  url "cart:checkout" %}"> Checkout </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+ </div>
+
+
+{% endblock %}
